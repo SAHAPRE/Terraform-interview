@@ -1,9 +1,15 @@
-When you created the environment using Terraform, what components did you set up using Terraform?
-How do you make changes to the configuration of already created resources using Terraform? -it will destroy the current rrsource and create new resource by applying apply
-When the Terraform state file is created, what do you do with that state file and where do you store and find it?
-How do you resolve the issue if you lose the Terraform state file?
-What are the major features you have found in Terraform that you can talk about? -Feature: This means you define what the infrastructure should look like,
- not how to create it. Terraform takes care of figuring out the best way to provision resources.
+##1. When you created the environment using Terraform, what components did you set up using Terraform? depends on the resources what you want to create.
+
+##2. How do you make changes to the configuration of already created resources using Terraform? -
+ First, modify the Terraform configuration files (e.g., .tf files) to reflect the desired changes. For example, if you want to change the instance type of an AWS EC2 instance,
+ you would modify the instance_type attribute in your configuration. it will destroy the current rrsource and create new resource by applying apply
+
+##3. When the Terraform state file is created, what do you do with that state file and where do you store and find it?
+
+##4. How do you resolve the issue if you lose the Terraform state file?
+
+##5. What are the major features you have found in Terraform that you can talk about?
+ -Feature: This means you define what the infrastructure should look like, not how to create it. Terraform takes care of figuring out the best way to provision resources.
 Benefit: It simplifies infrastructure management by abstracting away the complexity of resource creation.
 
  Terraform can manage infrastructure on a variety of cloud platforms (AWS, Azure, Google Cloud, etc.), as well as on-prem resources.
@@ -27,30 +33,30 @@ Terraform supports provisioners, which allow you to execute scripts or commands 
 Feature: Provisioners like local-exec and remote-exec can be used to run commands (e.g., configuring servers) or scripts (e.g., deploying code) after resource
  creation.
 
-
 Terraform allows you to version control your infrastructure code, enabling collaboration and change tracking.
 Feature: You can use Git to manage Terraform configurations, keep track of changes, and roll back to previous versions if needed.
 
- Terraform can import existing infrastructure into its management.
-Feature: Using the terraform import command, you can bring pre-existing resources (like EC2 instances or S3 buckets) into Terraform’s state without needing to 
-recreate them.
+ Terraform can import existing infrastructure into its management. Feature: Using the terraform import command, you can bring pre-existing resources (like EC2 instances or
+ S3 buckets) into Terraform’s state without needing to recreate them.
 
 Terraform allows you to define input variables to parameterize configurations and output values to return information about your infrastructure.
-Feature: Input variables help make your configurations reusable, and output values let you easily share data between modules or display critical information
- (like IP addresses or resource IDs).
+Feature: Input variables help make your configurations reusable, and output values let you easily share data between modules or display critical information(like IP addresses 
+or resource IDs).
  
-What is the `terraform validate` command used for, and can you provide an example?
+##6. What is the `terraform validate` command used for, and can you provide an example?
 Syntax Check: It checks whether your HCL (HashiCorp Configuration Language) syntax is correct.
-Configuration Consistency: It verifies that the configuration is internally consistent, such as checking for any missing or invalid arguments within the resources, modules, or variables.
+Configuration Consistency: It verifies that the configuration is internally consistent, such as checking for any missing or invalid arguments within the resources, modules, or 
+variables.
 Dependency Check: It ensures that the resources and modules referenced in the configuration exist and are correctly configured.
 Terraform Version Compatibility: It also checks if the configuration is compatible with the version of Terraform you’re using (e.g., some features may not be 
 available in older Terraform versions).
 
 
-Have you ever heard about the lifecycle in Terraform? Can you talk more about it?
+##7. Have you ever heard about the lifecycle in Terraform? Can you talk more about it?
 
-Do you have any experience with Ansible? diff b/w terraform and ansible?
-Ansible and Terraform are both popular tools for **Infrastructure as Code (IaC)**, but they have different purposes, approaches, and features. Here's a comparison of **Ansible** and **Terraform** to highlight their key differences:
+##8. Do you have any experience with Ansible? diff b/w terraform and ansible?
+Ansible and Terraform are both popular tools for **Infrastructure as Code (IaC)**, but they have different purposes, approaches, and features. Here's a comparison of **Ansible** 
+and **Terraform** to highlight their key differences:
 
 ### 1. **Primary Purpose**
 
@@ -66,7 +72,8 @@ Ansible and Terraform are both popular tools for **Infrastructure as Code (IaC)*
 ### 2. **Approach (Declarative vs. Imperative)**
 
 - **Ansible**:
-  - **Imperative**: Ansible follows an imperative approach, which means you define the steps or tasks that need to be performed in a specific order to achieve the desired state. You are specifying **how** things should be done.
+  - **Imperative**: Ansible follows an imperative approach, which means you define the steps or tasks that need to be performed in a specific order to achieve the desired state.
+  You are specifying **how** things should be done.
   - Example: You define tasks such as "install Apache," "configure Nginx," or "copy files," and Ansible will execute them sequentially.
 
 - **Terraform**:
@@ -141,9 +148,8 @@ Ansible and Terraform are both popular tools for **Infrastructure as Code (IaC)*
   
 - **Terraform**:
   - Terraform also has a vibrant and growing community, with the **Terraform Registry** providing a wealth of reusable modules for managing cloud infrastructure.
-    ```
 
-### Summary of Differences:
+Differences:
 
 | Feature                     | Ansible                                    | Terraform                                   |
 |-----------------------------|--------------------------------------------|--------------------------------------------|
@@ -157,7 +163,6 @@ Ansible and Terraform are both popular tools for **Infrastructure as Code (IaC)*
 | **Learning Curve**           | Easier for beginners                      | Slightly steeper learning curve           |
 | **Best Use Case**            | Configuration management and orchestration | Infrastructure as Code (IaC)              |
 
-### Conclusion:
 
 - **Ansible** is ideal for **configuration management, software installation, and orchestration** of tasks across multiple systems.
 - **Terraform** is focused on **infrastructure provisioning** and managing the lifecycle of cloud resources.
@@ -166,89 +171,90 @@ In many real-world scenarios, **Ansible** and **Terraform** are used together, w
 In a scenario where you have 20 resources running on a public cloud (AWS or Azure) and you want to destroy just one resource, how would you go about doing that?
 terraform destroy -target=aws_instance.example
 
-Have you ever preserved a key that you created using Terraform? - AWS secret manager
+##9. Have you ever preserved a key that you created using Terraform? - AWS secret manager
 
-What happens if you delete the Terraform state file and then run the `terraform apply` or `terraform plan` command? - it will again create the resource
+##10. What happens if you delete the Terraform state file and then run the `terraform apply` or `terraform plan` command? -
+ Deleting the terraform.tfstate file removes Terraform's record of the current infrastructure state. Without it, Terraform loses the ability to know what resources exist and 
+their current configurations.it will again create the resource
 
-Have you ever worked with modules in Terraform?
+##11. Have you ever worked with modules in Terraform?
 
-What are the different types of modules in Terraform?
+##12. What are the different types of modules in Terraform?
 
-The module that gets called is what: a parent module or a child module?
+##13. The module that gets called is what: a parent module or a child module?
+In Terraform, when one module is called or used by another, the module that is being called is considered the child module, and the module that calls it is the parent module.
 
-From where we call a module, what is that module called?
+##14. From where we call a module, what is that module called? - Parent Module
 
-Have you ever heard about remote backends in Terraform? Do you have any ideas or experience with them?
+##15. Have you ever heard about remote backends in Terraform? Do you have any ideas or experience with them?
 
-How can you provide variable values at runtime in Terraform? terraform apply -var="region=us-west-2" -var="instance_type=t2.micro" (at command line)
+##16. How can you provide variable values at runtime in Terraform? 
+terraform apply -var="region=us-west-2" -var="instance_type=t2.micro" (at command line)
 
-In an organization, how do you manage multiple environments in Terraform? using modules
+##17. In an organization, how do you manage multiple environments in Terraform? 
+using modules
 
-Why do we call Terraform "Infrastructure as Code" (IaC)? Is there a particular reason for this? -because it allows you to define, provision, and manage your infrastructure using 
-machine-readable code
+##18. Why do we call Terraform "Infrastructure as Code" (IaC)? Is there a particular reason for this? 
+-because it allows you to define, provision, and manage your infrastructure using machine-readable code
 
-Can you explain some drawbacks or challenges you have faced in your career?
-
-Which version of Terraform are you using? 1.5.0
+##19. Which version of Terraform are you using? 
+1.5.0
 
 Github-
 
-Can you explain what is Terraform? How it works?
-What benefits infrastructure-as-code has?
-Why Terraform and not other technologies? (e.g. Ansible, Puppet, CloufFormation)
-Explain what is "Terraform configuration"?
-Explain each of the following:
+##20. Can you explain what is Terraform? How it works?
+##21. What benefits infrastructure-as-code has?
+##22. Why Terraform and not other technologies? (e.g. Ansible, Puppet, CloufFormation)
+##23. Explain what is "Terraform configuration"?
+##24. Explain each of the following:
 Provider
 Resource
-Provisioner - a provisioner is a special type of resource that allows you to execute scripts or commands on your infrastructure after it has been created or 
+- Provisioner - a provisioner is a special type of resource that allows you to execute scripts or commands on your infrastructure after it has been created or 
 updated. Provisioners are useful when you need to configure resources or set up software and services after they are created by Terraform.
 What terraform.tfstate file is used for? The terraform.tfstate file is a critical file used by Terraform to store the state of your infrastructure. It essentially 
 represents a snapshot of the current state of the infrastructure managed by Terraform. This file is how Terraform keeps track of the resources it manages, what 
 resources are in use, and their configurations.
-Explain what the following commands do:
+##25. Explain what the following commands do:
 terraform init
 terraform plan
 terraform validate
 terraform apply
-How to write down a variable which changes by an external source or during terraform apply?
-Give an example of several Terraform best practices
-Explain how implicit and explicit dependencies work in Terraform - 
-What is local-exec and remote-exec in the context of provisioners?
-What is a "tainted resource"?
-What terraform taint does? - In Terraform, the terraform taint command is used to mark a resource as tainted, which means that the resource will be destroyed and recreated during 
-the next terraform apply run.
-What types of variables are supported in Terraform?
-What is a data source? In what scenarios for example would need to use it?
-What are output variables and what terraform output does?
-Explain Modules
-What is the Terraform Registry?
-Explain remote-exec and local-exec
+##26. How to write down a variable which changes by an external source or during terraform apply?
+##27. Give an example of several Terraform best practices
+##28. Explain how implicit and explicit dependencies work in Terraform - 
+##29. What is local-exec and remote-exec in the context of provisioners?
+##30. What is a "tainted resource"?
+##31. What terraform taint does? 
+In Terraform, the terraform taint command is used to mark a resource as tainted, which means that the resource will be destroyed and recreated during the next terraform apply run.
+##32. What types of variables are supported in Terraform?
+##33. What is a data source? In what scenarios for example would need to use it?
+##34. What are output variables and what terraform output does?
+##35. Explain Modules
+##36. What is the Terraform Registry?
+##37. Explain remote-exec and local-exec
 
 ⭐ Advanced
-Explain "Remote State". When would you use it and how?
-Explain "State Locking" - If you're using a remote backend (e.g., S3 with DynamoDB for state locking), state locking is enabled to prevent multiple users 
+##38. Explain "Remote State". When would you use it and how?
+##39. Explain "State Locking" 
+If you're using a remote backend (e.g., S3 with DynamoDB for state locking), state locking is enabled to prevent multiple users 
 from modifying the state at the same time. This ensures that only one person can apply changes to the infrastructure at any given time, preventing race 
 conditions and conflicting changes.
 
-Remote state in terraform and state in terraform?
-terraform data block vs resource block?
-How do you mange credentials in terraform?
-Explain the concept of a workspace
-terraform modules?
-Provider in terraform
-Null resource in terraform
-How to Ignore the Error Duplicate Resource when applying Terraform
-What are the commands of terraform apart from init, apply, plan
-How you maintain the state file
-If I lose the state files in terraform how can I recover that
-Is there a tool that can look for security vulnerabilities in your terraform code?
-explain provisioners in terraform.
-variables vs locals
-Does Terraform support multi-provider deployments?
-How to Store Sensitive Data in Terraform?
-Give the terraform configuration for creating a single EC2 instance on AWS
-How does Terraform manage updates to existing resources?
-How can you manage versioning of Terraform configurations? by s3
+##40. Remote state in terraform and state in terraform?
+##41. terraform data block vs resource block?
+##42. How do you mange credentials in terraform?
+##43. Explain the concept of a workspace
+terraform modules, Provider in terraform, Null resource in terraform
+##44. How to Ignore the Error Duplicate Resource when applying Terraform
+##45. What are the commands of terraform apart from init, apply, plan
+##46. How you maintain the state file, If I lose the state files in terraform how can I recover that
+##47. Is there a tool that can look for security vulnerabilities in your terraform code?
+##48. variables vs locals
+##49. Does Terraform support multi-provider deployments?
+##50. How to Store Sensitive Data in Terraform?
+##51. Give the terraform configuration for creating a single EC2 instance on AWS
+##52. How does Terraform manage updates to existing resources?
+##53. How can you manage versioning of Terraform configurations? by s3
 
 
 When working with **Terraform** in real-time scenarios, you are often asked questions related to **infrastructure as code**, **state management**, **deployment strategies**, and **troubleshooting**. Here are some **real-world Terraform scenario questions** you might encounter in interviews or day-to-day development work:
@@ -409,4 +415,5 @@ When working with **Terraform** in real-time scenarios, you are often asked ques
      - After importing, you can manage the resource with Terraform, but you’ll need to create the corresponding configuration manually or by using `terraform state` commands.
      - Example:
        ```bash
-       terraform import aws_instance.example i-1234567890abcdef
+       terraform import aws_instance.example i-1234567890abcdef0
+       ```
